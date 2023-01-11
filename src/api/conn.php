@@ -3,7 +3,7 @@
     $servername = "localhost";
     $port = "3307";
     $username = "root";
-    $password = "";
+    $password = "123456";
     $dbname = "chatdb";
 
     // Create connection
