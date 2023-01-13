@@ -3,9 +3,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script src="public/js/nav.js"></script>
     <link rel="stylesheet" href="public/css/styles.css" />
-    <title>Home</title>
+    <title>Login</title>
   </head>
   <nav>
     <input type="checkbox" id="active" />
@@ -18,7 +18,7 @@
     </div>
   </nav>
   <body>
-    <section class="conteudo">
+    <section id="conteudo" class="conteudo">
       <div class="form">
         <form action="/src/api/user/login.php"></form>
         <div class="title">Login</div>
@@ -29,15 +29,11 @@
           <label for="name" class="placeholder">Nome</label>
         </div>
         <div class="input-container ic2">
-          <input id="password" class="input" type="text" placeholder=" " />
+          <input id="password" class="input" type="password" placeholder=" " />
           <div class="cut"></div>
           <label for="password" class="placeholder">Password</label>
         </div>
-        <div class="input-container ic2">
-            <input id="confirmpass" class="input" type="text" placeholder=" " />
-            <div class="cut"></div>
-            <label for="confirmpassword" class="placeholder">Confirme sua Password</label>
-          </div>
+
         <div class="input-container ic2">
           <input id="email" class="input" type="text" placeholder=" " />
           <div class="cut cut-short"></div>

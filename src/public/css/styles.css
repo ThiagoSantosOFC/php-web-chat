@@ -15,12 +15,13 @@ body{
   margin-top: 200px;
 }
 
-.butoes {
+
+.botoes {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  row-gap: 100px;
+  margin-top: 200px;
 }
 
 .button {
@@ -231,9 +232,10 @@ body{
     background-color: #15172b;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 570px;
+    height: 500px;
     padding: 20px;
     width: 320px;
+  
 
     box-shadow: 0px 10px 15px 0px #15172b;
     }
@@ -345,4 +347,5 @@ body{
   .submit:active {
     background-color: #06b;
   }
+  
   

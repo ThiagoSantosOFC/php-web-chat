@@ -26,7 +26,7 @@
     $port = "3306";
     $username = "root";
     $password = "";
-    $dbname = "gamedb";
+    $dbname = "chatdb";
 
     // Create connection
     $conn = null;

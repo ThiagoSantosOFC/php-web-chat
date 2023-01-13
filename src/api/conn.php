@@ -1,9 +1,9 @@
 <?php
     // Database connection
     $servername = "localhost";
-    $port = "3307";
+    $port = "3306";
     $username = "root";
-    $password = "123456";
+    $password = "";
     $dbname = "chatdb";
 
     // Create connection
