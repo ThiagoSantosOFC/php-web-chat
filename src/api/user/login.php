@@ -66,14 +66,14 @@
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['email'] = $row['email'];
-                    $_SESSION['preorder'] = $row['preorder'];
+                   
                     $_SESSION['role'] = $row['role'];
                     
                     //put session into a cookie
                     setcookie("id", $_SESSION['id'], time() + (86400 * 30), "/");
                     setcookie("username", $_SESSION['username'], time() + (86400 * 30), "/");
                     setcookie("email", $_SESSION['email'], time() + (86400 * 30), "/");
-                    setcookie("preorder", $_SESSION['preorder'], time() + (86400 * 30), "/");
+                
                     
 
 
@@ -85,7 +85,6 @@
                         "id" => $row['id'],
                         "username" => $row['username'],
                         "email" => $row['email'],
-                        "preorder" => $row['preorder'],
                         "role" => $row['role'],
                         "success" => true
                     );
@@ -106,6 +105,7 @@
                 "success" => false
             );
             echo json_encode($response);
+ 
         }
 
     } catch (Exception $e) {

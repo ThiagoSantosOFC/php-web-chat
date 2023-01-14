@@ -235,8 +235,10 @@ body{
     height: 500px;
     padding: 20px;
     width: 320px;
-  
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
     box-shadow: 0px 10px 15px 0px #15172b;
     }
   

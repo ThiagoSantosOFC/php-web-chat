@@ -62,25 +62,24 @@
         $username = $data['username'];
         $password = $data['password'];
         $email = $data['email'];
-        $preorder = $data['preorder'];
         $role = $data['role'];
+        $confirmPassword = $data['confirmpass'];
     } else {
         // Get data from the form
         $username = isset($_POST['username']) ? $_POST['username'] : "";
         $password = isset($_POST['password']) ? $_POST['password'] : "";
         $email = isset($_POST['email']) ? $_POST['email'] : "";
-        $preorder = isset($_POST['preorder']) ? $_POST['preorder'] : 0;
         $role = isset($_POST['role']) ? $_POST['role'] : "user";
     }
 
     
     // Check if the params are not null
-    if ($username != "" && $password != "" && $preorder != "" && $role != "") {
+    if ($username != "" && $password != "" && $role != "") {
         // Criptography the password
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         // SQL query
-        $sql = "INSERT INTO User (username, password, email, preorder, role) VALUES ('$username', '$password', '$email', '$preorder', '$role')";
+        $sql = "INSERT INTO user (username, password, email, role) VALUES ('$username', '$password', '$email', '$role')";
         try{
             // Insert data
             if ($conn->query($sql) === TRUE) {
@@ -128,7 +127,7 @@
         // Show what are recived with var_dump
         var_dump($username);
         var_dump($password);
-        var_dump($preorder);
+        var_dump($email);
         var_dump($role);
 
         echo json_encode($error);
