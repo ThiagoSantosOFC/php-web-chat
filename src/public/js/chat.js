@@ -1,4 +1,9 @@
 //get id cookie and set it to ID
+function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
 
 let ID = getCookie("id");
 
@@ -8,6 +13,36 @@ onload = function () {
   } else {
     console.log("ID: " + ID);
     //get mensagens from database
+    try {
+      fetch("/php-web-chat/src/api/message/get.php?join=true")
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((element) => {
+            if (element.user_id == ID) {
+              appendMessage(
+                element.username,
+                "/php-web-chat/src/public/assets/user.png",
+                "right",
+                
+                element.content
+              );
+            } else {
+              appendMessage(
+                element.username,
+                "/php-web-chat/src/public/assets/user.png",
+                "left",
+                
+                element.content
+              );
+            }
+           
+          });
+        });
+    }
+    catch (error) {
+      console.log(error);
+    }
+
   }
 };
 
@@ -19,11 +54,6 @@ const msgerChat = get(".msger-chat");
 
 var PERSON_NAME = getCookie("username");
 
-function getCookie(name) {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
-}
 
 msgerForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -34,7 +64,7 @@ msgerForm.addEventListener("submit", (event) => {
   } else {
     //send msg to database
     try {
-      fetch("/php-web-chat/src/api/message/create.php", {
+      fetch("/php-web-chat/src/api/message/create.php?jsonpost=true", {
         method: "POST",
         body: JSON.stringify({
           content: msgText,
@@ -49,8 +79,9 @@ msgerForm.addEventListener("submit", (event) => {
     } finally {
       appendMessage(
         PERSON_NAME,
+        "/php-web-chat/src/public/assets/user.png",
         "right",
-        "https://image.flaticon.com/icons/svg/145/145867.svg",
+        
         msgText
       );
       msgerInput.value = "";
@@ -91,6 +122,3 @@ function formatDate(date) {
   return `${h.slice(-2)}:${m.slice(-2)}`;
 }
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
