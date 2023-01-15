@@ -8,8 +8,8 @@ function getCookie(name) {
 let ID = getCookie("id");
 
 onload = function () {
-  if (ID == null || ID == "" || ID == "undefined") {
-    window.location.href = "/php-web-chat/src/login";
+  if (ID === null ||ID == "null" || ID == "" || ID == "undefined") {
+    window.location.href = "/php-web-chat/src/login.html";
   } else {
     console.log("ID: " + ID);
     //get mensagens from database
@@ -122,3 +122,11 @@ function formatDate(date) {
   return `${h.slice(-2)}:${m.slice(-2)}`;
 }
 
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", (event) => {
+
+   //get id cookie and set it to null
+     document.cookie = "id=null; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+});

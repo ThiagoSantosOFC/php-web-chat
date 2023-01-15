@@ -8,7 +8,7 @@ function getCookie(name) {
 let ID = getCookie("id");
 
 onload = function () {
-  if (ID == null || ID == "" || ID == "undefined") {
+  if (ID == null ||ID =="null" ||  ID == "" || ID == "undefined") {
 //do nothing
   } else {
     console.log("ID: " + ID);
@@ -17,3 +17,4 @@ onload = function () {
 
   }
 };
+
