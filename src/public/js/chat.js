@@ -1,31 +1,61 @@
+//get id cookie and set it to ID
+
+let ID = getCookie("id");
+
+onload = function () {
+  if (ID == null || ID == "" || ID == "undefined") {
+    window.location.href = "/php-web-chat/src/login";
+  } else {
+    console.log("ID: " + ID);
+    //get mensagens from database
+  }
+};
+
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 
-const BOT_MSGS = [
-  "Hi, how are you?",
-  "Ohh... I can't understand what you trying to say. Sorry!",
-  "I like to play games... But I don't know how to play!",
-  "Sorry if my answers are not relevant. :))",
-  "I feel sleepy! :("
-];
+//get cookie username and set it to PERSON_NAME
 
-// Icons made by Freepik from www.flaticon.com
-const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
-const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
-const BOT_NAME = "BOT";
-const PERSON_NAME = "Sajad";
+var PERSON_NAME = getCookie("username");
 
-msgerForm.addEventListener("submit", event => {
+function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+msgerForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const msgText = msgerInput.value;
-  if (!msgText) return;
-
-  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
-  msgerInput.value = "";
-
-  botResponse();
+  if (!msgText) {
+    return null;
+  } else {
+    //send msg to database
+    try {
+      fetch("/php-web-chat/src/api/message/create.php", {
+        method: "POST",
+        body: JSON.stringify({
+          content: msgText,
+          user_id: ID,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      appendMessage(
+        PERSON_NAME,
+        "right",
+        "https://image.flaticon.com/icons/svg/145/145867.svg",
+        msgText
+      );
+      msgerInput.value = "";
+    }
+  }
 });
 
 function appendMessage(name, img, side, text) {
@@ -47,16 +77,6 @@ function appendMessage(name, img, side, text) {
 
   msgerChat.insertAdjacentHTML("beforeend", msgHTML);
   msgerChat.scrollTop += 500;
-}
-
-function botResponse() {
-  const r = random(0, BOT_MSGS.length - 1);
-  const msgText = BOT_MSGS[r];
-  const delay = msgText.split(" ").length * 100;
-
-  setTimeout(() => {
-    appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-  }, delay);
 }
 
 // Utils

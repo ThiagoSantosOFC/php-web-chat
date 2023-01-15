@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="public/css/styles.css" />
     <link rel="stylesheet" href="public/css/chat.css" />
 
-    <title>Home</title>
+    <title>Chat</title>
   </head>
   <nav>
     <input type="checkbox" id="active" />
@@ -17,6 +17,7 @@
         <li><a href="/php-web-chat/src/index.html">Home</a></li>
         <li><a href="/php-web-chat/src/login.html">Login</a></li>
         <li><a href="/php-web-chat/src/register.html">registrar</a></li>
+        <li><a href="/php-web-chat/src/chat.html">Chat</a></li>
       </ul>
     </div>
   </nav>
@@ -24,7 +25,7 @@
     <section class="msger">
       <header class="msger-header">
         <div class="msger-header-title">
-          <i class="fas fa-comment-alt"></i> SimpleChat
+          <i class="fas fa-comment-alt"></i> PHP CHAT
         </div>
         <div class="msger-header-options">
           <span><i class="fas fa-cog"></i></span>
@@ -32,56 +33,22 @@
       </header>
 
       <main class="msger-chat">
-        <div class="msg left-msg">
-          <div
-            class="msg-img"
-            style="
-              background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg);
-            "
-          ></div>
+        <div class="msg left-msg"></div>
 
-          <div class="msg-bubble">
-            <div class="msg-info">
-              <div class="msg-info-name">BOT</div>
-              <div class="msg-info-time">12:45</div>
-            </div>
-
-            <div class="msg-text">
-              Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
-            </div>
-          </div>
-        </div>
-
-        <div class="msg right-msg">
-          <div
-            class="msg-img"
-            style="
-              background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg);
-            "
-          ></div>
-
-          <div class="msg-bubble">
-            <div class="msg-info">
-              <div class="msg-info-name">Sajad</div>
-              <div class="msg-info-time">12:46</div>
-            </div>
-
-            <div class="msg-text">You can change your name in JS section!</div>
-          </div>
-        </div>
+        <div class="msg right-msg"></div>
       </main>
 
       <form class="msger-inputarea">
         <input
           type="text"
           class="msger-input"
-          placeholder="Enter your message..."
+          placeholder="Escreva sua mensagem..."
         />
-        <button type="submit" class="msger-send-btn">Send</button>
+        <button type="submit" class="msger-send-btn">Enviar</button>
       </form>
     </section>
 
-    <script src="chat.js"></script>
+    <script src="public/js/chat.js"></script>
     <script src="public/js/nav.js"></script>
   </body>
 </html>

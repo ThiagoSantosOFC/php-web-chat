@@ -89,6 +89,8 @@
                         "success" => true
                     );
                     echo json_encode($response);
+                    // go to chat page
+                    header("Location: /php-web-chat/src/chat.html");
                 } else {
                     // Password don't match
                     $response = array(
