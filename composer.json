@@ -1,0 +1,17 @@
+{
+    "name": "phpchat/nois",
+    "require": {
+        "cboden/ratchet": "^0.4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpchat\\Nois\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thiago Santos",
+            "email": "t.mateus.santos2004@gmail.com"
+        }
+    ]
+}
